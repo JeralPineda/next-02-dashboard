@@ -3,26 +3,31 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export interface MenuItem {
+interface Props {
   path: string;
   icon: JSX.Element;
   title: string;
-  subtitle: string;
+  subTitle: string;
 }
 
-export const SidebarMenuItem = ({ path, icon, title, subtitle }: MenuItem) => {
-  const pathname = usePathname();
+export const SidebarMenuItem = ({ path, icon, title, subTitle }: Props) => {
+  const currentPath = usePathname();
 
   return (
     <Link
       href={path}
-      className={`w-full px-2 inline-flex space-x-2 items-center border-b border-slate-700 py-3 hover:bg-white/5 transition ease-linear duration-150 ${pathname === path ? "bg-slate-700" : ""}`}
+      className={`
+            w-full px-2 inline-flex space-x-2 items-center border-b border-slate-700 py-3 hover:bg-white/5 transition ease-linear duration-150
+            ${currentPath === path ? "bg-blue-800" : ""}
+          `}
     >
-      {icon}
+      <div>
+        <div>{icon}</div>
+      </div>
       <div className="flex flex-col">
         <span className="text-lg font-bold leading-5 text-white">{title}</span>
         <span className="text-sm text-white/50 hidden md:block">
-          {subtitle}
+          {subTitle}
         </span>
       </div>
     </Link>
