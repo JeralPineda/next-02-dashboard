@@ -11,7 +11,7 @@ export default function DashboardLayout({
         {/* sidebar  */}
         <Sidebar />
 
-        <div className="w-full  text-slate-900 p-4">{children}</div>
+        <div className="w-full  text-slate-900">{children}</div>
       </div>
     </div>
   );
