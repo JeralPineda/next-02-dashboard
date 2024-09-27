@@ -4,6 +4,7 @@ import {
   IoCalculator,
   IoFootball,
   IoLogoReact,
+  IoStar,
 } from "react-icons/io5";
 import { SidebarMenuItem } from "./sidebar-menu-item";
 
@@ -25,6 +26,12 @@ const menuItems = [
     icon: <IoFootball size={40} />,
     title: "Pokemons",
     subTitle: "Generación Estática",
+  },
+  {
+    path: "/dashboard/favoritos",
+    icon: <IoStar size={40} />,
+    title: "Favoritos",
+    subTitle: "Estado global",
   },
 ];
 

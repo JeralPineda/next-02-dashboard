@@ -20,18 +20,14 @@ const getPokemons = async (
   return pokemons;
 };
 
-export const metadata = {
-  title: "151 Pokemons",
-  description: "Listado de 151 pokemons",
-};
-
 export default async function page() {
   const pokemons = await getPokemons(151);
 
   return (
     <div className="flex flex-col">
       <h2 className="text-2xl my-2 p-2">
-        Listado de Pokemons <span className="text-blue-500">estático</span>
+        Listado de Pokemons{" "}
+        <small className="text-blue-500">Global state</small>
       </h2>
 
       <PokemonGrid pokemons={pokemons} />
