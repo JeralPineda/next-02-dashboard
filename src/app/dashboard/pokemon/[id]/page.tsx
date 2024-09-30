@@ -9,7 +9,9 @@ interface Props {
 
 //! Se ejecutara en build time
 export async function generateStaticParams() {
-  const static151Pokemons = Array.from({ length: 151 }).map((v, i) => `${i + 1}`);
+  const static151Pokemons = Array.from({ length: 151 }).map(
+    (v, i) => `${i + 1}`,
+  );
 
   return static151Pokemons.map((id) => ({ id }));
 }
@@ -25,7 +27,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   } catch (error) {
     return {
       title: "Página del pokémon",
-      description: "Culpa cupidatat ipsum magna reprehenderit ex tempor sint ad minim reprehenderit consequat sit.",
+      description:
+        "Culpa cupidatat ipsum magna reprehenderit ex tempor sint ad minim reprehenderit consequat sit.",
     };
   }
 }
@@ -35,8 +38,8 @@ const getPokemon = async (id: string): Promise<Pokemon> => {
     const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
       // cache: "force-cache", // TODO: cambiar esto en un futuro
       next: {
-        revalidate: 60 * 60 * 30 * 6
-      }
+        revalidate: 60 * 60 * 30 * 6,
+      },
     }).then((resp) => resp.json());
 
     return pokemon;
@@ -87,24 +90,46 @@ export default async function PokemonPage({ params }: Props) {
 
           <div className="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4  drop-shadow-lg ">
             <p className="text-sm text-gray-600">Peso</p>
-            <span className="text-base font-medium text-navy-700 flex">{pokemon.weight}</span>
+            <span className="text-base font-medium text-navy-700 flex">
+              {pokemon.weight}
+            </span>
           </div>
 
           <div className="flex flex-col justify-center rounded-2xl bg-white bg-clip-border px-3 py-4  drop-shadow-lg">
             <p className="text-sm text-gray-600">Regular Sprites</p>
             <div className="flex justify-center">
-              <Image src={pokemon.sprites.front_default} width={100} height={100} alt={`sprite ${pokemon.name}`} />
+              <Image
+                src={pokemon.sprites.front_default}
+                width={100}
+                height={100}
+                alt={`sprite ${pokemon.name}`}
+              />
 
-              <Image src={pokemon.sprites.back_default} width={100} height={100} alt={`sprite ${pokemon.name}`} />
+              <Image
+                src={pokemon.sprites.back_default}
+                width={100}
+                height={100}
+                alt={`sprite ${pokemon.name}`}
+              />
             </div>
           </div>
 
           <div className="flex flex-col justify-center rounded-2xl bg-white bg-clip-border px-3 py-4  drop-shadow-lg">
             <p className="text-sm text-gray-600">Shiny Sprites</p>
             <div className="flex justify-center">
-              <Image src={pokemon.sprites.front_shiny} width={100} height={100} alt={`sprite ${pokemon.name}`} />
+              <Image
+                src={pokemon.sprites.front_shiny}
+                width={100}
+                height={100}
+                alt={`sprite ${pokemon.name}`}
+              />
 
-              <Image src={pokemon.sprites.back_shiny} width={100} height={100} alt={`sprite ${pokemon.name}`} />
+              <Image
+                src={pokemon.sprites.back_shiny}
+                width={100}
+                height={100}
+                alt={`sprite ${pokemon.name}`}
+              />
             </div>
           </div>
         </div>
